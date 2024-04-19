@@ -1,5 +1,6 @@
 import { Route, BrowserRouter, Routes} from 'react-router-dom';
 import MainPage from '../pages/main-page/main-page';
+import Quest from '../pages/quest/quest';
 
 
 function App(): JSX.Element {
@@ -7,6 +8,7 @@ function App(): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<MainPage />} />
+        <Route path='/quest' element={<Quest />} />
       </Routes>
     </BrowserRouter>
   );
