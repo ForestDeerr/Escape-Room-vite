@@ -1,6 +1,6 @@
 import Header from '../../components/header';
 import Footer from '../../components/footer';
-import Filter from '../../components/filter';
+import Filters from '../../components/filters';
 import CardsGrid from '../../components/cards-grid';
 
 import { QuestsType } from '../../types/quests';
@@ -23,7 +23,7 @@ function MainPage({quests}: MainPageProps ): JSX.Element {
             <h2 className="title title--size-m page-content__title">Выберите тематику</h2>
           </div>
           <div className="page-content__item">
-            <Filter />
+            <Filters />
           </div>
           <h2 className="title visually-hidden">Выберите квест</h2>
           <CardsGrid quests={quests} />

@@ -19,7 +19,7 @@ function Card({questCard}: CardProps): JSX.Element {
             </picture>
           </div>
           <div className="quest-card__content">
-            <div className="quest-card__info-wrapper"><a className="quest-card__link" href="quest.html">Склеп</a>
+            <div className="quest-card__info-wrapper"><object><a className="quest-card__link" href="quest.html">Склеп</a></ object>
             </div>
             <ul className="tags quest-card__tags">
               <li className="tags__item">
