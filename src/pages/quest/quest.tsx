@@ -1,7 +1,22 @@
 import Footer from '../../components/footer';
 import Header from '../../components/header';
 
-function Quest(): JSX.Element {
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import { QuestsType } from '../../types/quests';
+
+type QuestProps = {
+  quests: QuestsType;
+}
+
+function Quest({quests}: QuestProps): JSX.Element {
+
+  const params = useParams();
+  const questId = params.id;
+  const selectedQuest = quests.filter((quest) => quest.id === questId)[0];
+  const {id, title, previewImg} = selectedQuest;
+
   return (
     <div className="wrapper">
       <Header />
@@ -14,7 +29,7 @@ function Quest(): JSX.Element {
         </div>
         <div className="container container--size-l">
           <div className="quest-page__content">
-            <h1 className="title title--size-l title--uppercase quest-page__title">Маньяк</h1>
+            <h1 className="title title--size-l title--uppercase quest-page__title">{title}</h1>
             <p className="subtitle quest-page__subtitle"><span className="visually-hidden">Жанр:</span>Ужасы
             </p>
             <ul className="tags tags--size-l quest-page__tags">
@@ -30,7 +45,9 @@ function Quest(): JSX.Element {
               </li>
             </ul>
             <p className="quest-page__description">В&nbsp;комнате с&nbsp;приглушённым светом несколько человек, незнакомых друг с&nbsp;другом, приходят в&nbsp;себя. Никто не&nbsp;помнит, что произошло прошлым вечером. Руки и&nbsp;ноги связаны, но&nbsp;одному из&nbsp;вас получилось освободиться. На&nbsp;стене висит пугающий таймер и&nbsp;запущен отсчёт 60&nbsp;минут. Сможете&nbsp;ли вы&nbsp;разобраться в&nbsp;стрессовой ситуации, помочь другим, разобраться что произошло и&nbsp;выбраться из&nbsp;комнаты?</p>
-            <a className="btn btn--accent btn--cta quest-page__btn" href="booking.html">Забронировать</a>
+            <Link to={'booking/'}>
+              <a className="btn btn--accent btn--cta quest-page__btn" href="booking.html">Забронировать</a>
+            </Link>
           </div>
         </div>
       </main>

@@ -3,8 +3,14 @@ import Footer from '../../components/footer';
 import Filter from '../../components/filter';
 import CardsGrid from '../../components/cards-grid';
 
-function MainPage(): JSX.Element {
+import { QuestsType } from '../../types/quests';
 
+type MainPageProps = {
+  quests: QuestsType;
+}
+
+
+function MainPage({quests}: MainPageProps ): JSX.Element {
 
   return (
     <div className="wrapper">
@@ -20,7 +26,7 @@ function MainPage(): JSX.Element {
             <Filter />
           </div>
           <h2 className="title visually-hidden">Выберите квест</h2>
-          <CardsGrid />
+          <CardsGrid quests={quests} />
         </div>
       </main>
       <Footer />
