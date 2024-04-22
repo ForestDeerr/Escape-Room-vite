@@ -3,17 +3,31 @@ import Footer from '../../components/footer';
 import Filters from '../../components/filters';
 import CardsGrid from '../../components/cards-grid';
 
-import { QuestsType } from '../../types/quests';
+import { LevelDifficultyType } from '../../types/difficulty-level';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useEffect } from 'react';
+import { fetchQuestsAction } from '../../store/api-actions';
 
 type MainPageProps = {
-  quests: QuestsType;
+  levelDifficulty: LevelDifficultyType;
 }
 
 
-function MainPage({quests}: MainPageProps ): JSX.Element {
+function MainPage({levelDifficulty}: MainPageProps): JSX.Element {
+
+  const dispatch = useAppDispatch();
+
+  useEffect(()=>{
+    dispatch(fetchQuestsAction());
+
+  }, [dispatch]);
+
+  const quests = useAppSelector((state)=>state.quests);
+
 
   return (
     <div className="wrapper">
+
       <Header />
       <main className="page-content">
         <div className="container">
@@ -26,7 +40,7 @@ function MainPage({quests}: MainPageProps ): JSX.Element {
             <Filters />
           </div>
           <h2 className="title visually-hidden">Выберите квест</h2>
-          <CardsGrid quests={quests} />
+          <CardsGrid quests={quests} levelDifficulty={levelDifficulty} />
         </div>
       </main>
       <Footer />

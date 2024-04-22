@@ -2,7 +2,7 @@ import { QuestsType } from '../types/quests';
 
 export const quests:QuestsType = [
   {
-    id: 'aba664c3-bdf3-4fb3-b8f3-42e007864bbf',
+    id: '356dd3bc-3f04-4a28-b11a-7f560b0d9fee',
     title: 'Склеп',
     previewImg: 'img/content/crypt/crypt-size-s.jpg',
     previewImgWebp: 'https://{server-url}/static/quest/sklep.webp',
