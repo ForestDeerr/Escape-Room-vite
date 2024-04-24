@@ -1,13 +1,19 @@
 import FilterThematic from './filter-thematic';
 import FilterDifficul from './filter-difficul';
 
-function Filters(): JSX.Element {
+import { ThematicsList } from '../types/filters';
+
+type FiltersProps = {
+  ThematicList:ThematicsList;
+}
+
+function Filters({ThematicList}: FiltersProps): JSX.Element {
 
 
   return (
 
     <form className="filter" action="#" method="get">
-      <FilterThematic />
+      <FilterThematic ThematicList={ThematicList} />
       <FilterDifficul />
 
 

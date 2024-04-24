@@ -5,8 +5,8 @@ import App from './components/app';
 import {Provider} from 'react-redux';
 import { store } from './store';
 
-import { quests } from './mocks/quests';
-import { LEVEL_DIFFICULTY } from './const';
+
+import { LEVEL_DIFFICULTY, FILTER_THEMATIC_LIST } from './const';
 
 
 const root = ReactDOM.createRoot(
@@ -17,8 +17,8 @@ root.render(
   <React.StrictMode>
     <Provider store = {store}>
       <App
-        quests={quests}
         levelDifficulty={LEVEL_DIFFICULTY}
+        ThematicList={FILTER_THEMATIC_LIST}
       />
     </Provider>
   </React.StrictMode>

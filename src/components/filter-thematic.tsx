@@ -1,58 +1,40 @@
-function FilterThematic(): JSX.Element {
+import { ThematicsList } from '../types/filters';
+import { useAppDispatch } from '../hooks';
+import { setTematicActive, getQuestActive } from '../store/action';
+
+type FilterThematicProps = {
+  ThematicList:ThematicsList;
+}
+
+function FilterThematic({ThematicList}: FilterThematicProps): JSX.Element {
+
+
+  const dispatch = useAppDispatch();
+
+  function changeCity (thematic:string) {
+
+    dispatch(setTematicActive(thematic));
+    dispatch(getQuestActive());
+
+  }
 
 
   return (
     <fieldset className="filter__section">
       <legend className="visually-hidden">Тематика</legend>
       <ul className="filter__list">
-        <li className="filter__item">
-          <input type="radio" name="type" id="all" />
-          <label className="filter__label" htmlFor="all">
-            <svg className="filter__icon" width="26" height="30" aria-hidden="true">
-              <use xlinkHref="#icon-all-quests"></use>
-            </svg><span className="filter__label-text">Все квесты</span>
-          </label>
-        </li>
-        <li className="filter__item">
-          <input type="radio" name="type" id="adventure" />
-          <label className="filter__label" htmlFor="adventure">
-            <svg className="filter__icon" width="36" height="30" aria-hidden="true">
-              <use xlinkHref="#icon-adventure"></use>
-            </svg><span className="filter__label-text">Приключения</span>
-          </label>
-        </li>
-        <li className="filter__item">
-          <input type="radio" name="type" id="horror" />
-          <label className="filter__label" htmlFor="horror">
-            <svg className="filter__icon" width="30" height="30" aria-hidden="true">
-              <use xlinkHref="#icon-horror"></use>
-            </svg><span className="filter__label-text">Ужасы</span>
-          </label>
-        </li>
-        <li className="filter__item">
-          <input type="radio" name="type" id="mystic" />
-          <label className="filter__label" htmlFor="mystic">
-            <svg className="filter__icon" width="30" height="30" aria-hidden="true">
-              <use xlinkHref="#icon-mystic"></use>
-            </svg><span className="filter__label-text">Мистика</span>
-          </label>
-        </li>
-        <li className="filter__item">
-          <input type="radio" name="type" id="detective" />
-          <label className="filter__label" htmlFor="detective">
-            <svg className="filter__icon" width="40" height="30" aria-hidden="true">
-              <use xlinkHref="#icon-detective"></use>
-            </svg><span className="filter__label-text">Детектив</span>
-          </label>
-        </li>
-        <li className="filter__item">
-          <input type="radio" name="type" id="sciFi" />
-          <label className="filter__label" htmlFor="sciFi">
-            <svg className="filter__icon" width="28" height="30" aria-hidden="true">
-              <use xlinkHref="#icon-sci-fi"></use>
-            </svg><span className="filter__label-text">Sci-fi</span>
-          </label>
-        </li>
+        { ThematicList.map((element, index)=>(
+          <li key={index} className="filter__item">
+            <a >
+              <input type="radio" name="type" id={element.id} />
+              <label className="filter__label" htmlFor={element.id}>
+                <svg className="filter__icon" width="26" height="30" aria-hidden="true">
+                  <use xlinkHref={`#icon-${element.icon}`}></use>
+                </svg><span onClick={() => (changeCity(element.id))} className="filter__label-text">{element.thematic}</span>
+              </label>
+            </a>
+          </li>
+        ))}
       </ul>
     </fieldset>
   );

@@ -13,11 +13,11 @@ export const quests:QuestsType = [
     ]},
   {
     id: 'aba664c3-bdf3-4fb3-b8f3-42e007864bbg',
-    title: 'Эксперемент',
+    title: 'Залуп',
     previewImg: 'img/content/experiment/experiment-size-s.jpg',
     previewImgWebp: 'https://{server-url}/static/quest/sklep.webp',
     level: 'easy',
-    type: 'adventures',
+    type: 'sci-fi',
     peopleMinMax: [
       5
     ]},
